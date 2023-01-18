@@ -1,0 +1,36 @@
+package com.everythingstore.repo;
+
+import com.everythingstore.model.Order;
+import com.everythingstore.util.DBConnection;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+public class OrderDAO implements DAO<Order> {
+
+    @Override
+    public ArrayList<Order> getAll() throws SQLException {
+        return null;
+    }
+
+    @Override
+    public Order get(int id) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public boolean delete(int id) throws SQLException {
+        return false;
+    }
+
+    @Override
+    public boolean update(Order item) throws SQLException {
+        return false;
+    }
+
+    @Override
+    public boolean add(Order item) throws SQLException {
+        return false;
+    }
+}

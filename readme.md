@@ -26,7 +26,7 @@ classes that's extra
 Ah, I was really hoping for around 3-4 days maximum to allow me to review all new implementation
 and then start unit testing - which elements would take longest to implement?
 
-Yeah the budget is okay - so Thursday would be acceptable? - can you just confirm which 
+Yeah, the budget is okay - so Thursday would be acceptable? - can you just confirm which 
 elements you will begin to implement and I'll move forward with payment. Which membership 
 option is this?
 
