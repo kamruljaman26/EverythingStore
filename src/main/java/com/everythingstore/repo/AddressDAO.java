@@ -1,12 +1,8 @@
 package com.everythingstore.repo;
 
 import com.everythingstore.model.Address;
-import com.everythingstore.model.Product;
-import com.everythingstore.util.DBConnection;
-
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.List;
 
 public class AddressDAO implements DAO<Address>{
 
@@ -35,8 +31,8 @@ public class AddressDAO implements DAO<Address>{
     }
 
     @Override
-    public boolean add(Address item) throws SQLException {
+    public int add(Address item) throws SQLException {
         // todo
-        return false;
+        return -1;
     }
 }

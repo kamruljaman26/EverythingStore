@@ -74,7 +74,7 @@ public class ProcessAddProductHandler implements HttpHandler {
 
             out.write(
                     "  <tr>" +
-                            "    <td>" + product.getID() + "</td>" +
+                            "    <td>" + product.getId() + "</td>" +
                             "    <td>" + product.getCategory() + "</td>" +
                             "    <td>" + product.getArtist() + "</td>" +
                             "    <td>" + product.getAlbum() + "</td>" +

@@ -79,7 +79,7 @@ public class Address {
         this.postcode = postcode;
     }
 
-    @Override
+/*    @Override
     public String toString(){
         return "Address: "
                 + "\n House Number: " + houseNo
@@ -87,6 +87,18 @@ public class Address {
                 + "\n Second Line of Address: " + addressLine2
                 + "\n country: " + country
                 + "\n postcode: " + postcode;
+    }*/
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "id=" + id +
+                ", houseNo='" + houseNo + '\'' +
+                ", addressLine1='" + addressLine1 + '\'' +
+                ", addressLine2='" + addressLine2 + '\'' +
+                ", country='" + country + '\'' +
+                ", postcode='" + postcode + '\'' +
+                '}';
     }
 }
 

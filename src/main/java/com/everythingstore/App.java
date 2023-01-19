@@ -224,7 +224,7 @@ public class App {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Update product with product ID: " + up.getID());
+        System.out.println("Update product with product ID: " + up.getId());
 
         System.out.println("Update category: ");
         category = scanner.nextLine();
@@ -265,7 +265,7 @@ public class App {
         else
             quantity = Integer.parseInt(cvquantity);
 
-        return new Product(up.getID(), category, artist, album, genre, SKU, price, quantity);
+        return new Product(up.getId(), category, artist, album, genre, SKU, price, quantity);
     }
 
     private static Customer updateCustomer(Customer up) {

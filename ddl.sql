@@ -9,12 +9,12 @@
 -- private int quantity;
 create table Product
 (
-    id       int primary key autoincrement,
+    id       integer primary key autoincrement,
     category varchar(30),
     artist   varchar(50),
     album    varchar(50),
     genre    varchar(50),
-    sku      varchar(50),
+    sku      varchar(50) unique not null,
     price    int,
     quantity int
 );

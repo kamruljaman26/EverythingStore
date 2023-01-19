@@ -49,7 +49,7 @@ public class DisplayAllProductHandler implements HttpHandler {
             for (Product p : allProducts) {
                 out.write(
                         "  <tr>" +
-                                "    <td><b>" + p.getID() + "<b></td>" +
+                                "    <td><b>" + p.getId() + "<b></td>" +
                                 "    <td>" + p.getCategory() + "</td>" +
                                 "    <td>" + p.getArtist() + "</td>" +
                                 "    <td>" + p.getAlbum() + "</td>" +
@@ -57,7 +57,7 @@ public class DisplayAllProductHandler implements HttpHandler {
                                 "    <td>" + p.getSKU() + "</td>" +
                                 "    <td>" + p.getPrice() + "</td>" +
                                 "    <td>" + p.getQuantity() + "</td>" +
-                                "<td><a href=\"/delete?id=" + p.getID() + "\"> delete </a><td>" +
+                                "<td><a href=\"/delete?id=" + p.getId() + "\"> delete </a><td>" +
                                 "  </tr>"
                 );
             }

@@ -57,7 +57,7 @@ public class Customer {
         this.customerTelNo = customerTelNo;
     }
 
-    @Override
+/*    @Override
     public String toString() {
         return "Customer: "
                 + "\n Customer ID: " + customerID
@@ -65,5 +65,16 @@ public class Customer {
                 + "\n Customer Surname: " + customerSurname
                 + "\n Customer Address: " + customerAddress
                 + "\n Telelphone Number: " + customerTelNo;
+    }*/
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "customerID=" + customerID +
+                ", customerForename='" + customerForename + '\'' +
+                ", customerSurname='" + customerSurname + '\'' +
+                ", customerAddress=" + customerAddress +
+                ", customerTelNo='" + customerTelNo + '\'' +
+                '}';
     }
 }

@@ -1,10 +1,11 @@
 package com.everythingstore.repo;
 
 import com.everythingstore.model.Order;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class OrderDAO implements DAO<Order> {
+public class CartDAO implements DAO<Order> {
 
     @Override
     public ArrayList<Order> getAll() throws SQLException {

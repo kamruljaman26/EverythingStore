@@ -35,8 +35,8 @@ public class CustomerDAO implements DAO<Customer>{
     }
 
     @Override
-    public boolean add(Customer item) throws SQLException {
-        return false;
+    public int add(Customer item) throws SQLException {
+        return -1;
     }
 }
 

@@ -62,7 +62,7 @@ public class DeleteProductHandler implements HttpHandler {
 
             out.write(
                     "  <tr>" +
-                            "    <td>" + deletedProduct.getID() + "</td>" +
+                            "    <td>" + deletedProduct.getId() + "</td>" +
                             "    <td>" + deletedProduct.getCategory() + "</td>" +
                             "    <td>" + deletedProduct.getArtist() + "</td>" +
                             "    <td>" + deletedProduct.getAlbum() + "</td>" +

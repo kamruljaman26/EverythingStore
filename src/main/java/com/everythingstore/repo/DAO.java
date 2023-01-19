@@ -32,6 +32,6 @@ public interface DAO<T> {
     boolean update(T item) throws SQLException;
 
     // add item
-    boolean add(T item) throws SQLException;
+    int add(T item) throws SQLException;
 
 }

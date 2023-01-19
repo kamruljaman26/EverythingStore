@@ -1,6 +1,7 @@
 package com.everythingstore.repo;
 
 import com.everythingstore.model.Product;
+
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -76,24 +77,27 @@ public class ProductDAO implements DAO<Product> {
      * @return status
      * @throws SQLException ex
      */
-    public boolean add(Product item) throws SQLException {
+    public int add(Product item) throws SQLException {
 
         //String insert = "INSERT INTO product" + " (ID, category, artist, album, genre, SKU, price, quantity)
         // VALUES " + " (?, ?, ?, ?, ?, ?, ?, ?);";
-        String insert = "INSERT INTO product (id, category, artist, album, genre, sku, price, quantity) VALUES ("
-                + item.getID() + ",'" + item.getCategory() + "','" + item.getArtist() + "','" + item.getAlbum() + "','"
+        String insert = "INSERT INTO product (category, artist, album, genre, sku, price, quantity) VALUES ("
+                + "'" + item.getCategory() + "','" + item.getArtist() + "','" + item.getAlbum() + "','"
                 + item.getGenre() + "','" + item.getSKU() + "'," + item.getPrice() + "," + item.getQuantity() + ");";
 
         try {
-            // execute query
-            getConnection()
-                    .createStatement()
-                    .executeUpdate(insert);
+            PreparedStatement statement = getConnection()
+                    .prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
+            // execute query - return generated id
+            statement.execute();
 
-            return true;
+            ResultSet rs = statement.getGeneratedKeys();
+            rs.next();
+
+            return rs.getInt(1);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-            return false;
+            return -1;
         }
     }
 
@@ -106,10 +110,12 @@ public class ProductDAO implements DAO<Product> {
      * @throws SQLException ex
      */
     public boolean update(Product item) throws SQLException {
-        String update = "UPDATE product " + "SET id = '" + item.getID() + "'," + "category = '" + item.getCategory() + "',"
+        String update = "UPDATE product " + "SET category = '" + item.getCategory() + "',"
                 + "artist = '" + item.getArtist() + "'," + "album = '" + item.getAlbum() + "'," + "genre = '"
                 + item.getGenre() + "',sku" + " = '" + item.getSKU() + "'," + "price = " + item.getPrice() + "," +
-                " quantity = " + item.getQuantity() + " WHERE ID = " + item.getID() + ";";
+                " quantity = " + item.getQuantity() + " WHERE id = " + item.getId() + ";";
+
+        System.out.println(update);
         try {
             // execute query
             getConnection()
@@ -141,11 +147,5 @@ public class ProductDAO implements DAO<Product> {
                 .executeUpdate(query);
 
         return result == 1;
-    }
-
-    public static void main(String[] args) throws SQLException {
-        ProductDAO dao = new ProductDAO();
-        System.out.println(dao.getAll());
-
     }
 }
