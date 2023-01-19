@@ -89,13 +89,14 @@ public class ProductDAO implements DAO<Product> {
             PreparedStatement statement = getConnection()
                     .prepareStatement(insert, Statement.RETURN_GENERATED_KEYS);
             // execute query - return generated id
-            statement.execute();
+            statement.executeUpdate();
 
             ResultSet rs = statement.getGeneratedKeys();
             rs.next();
 
             return rs.getInt(1);
         } catch (SQLException e) {
+            e.printStackTrace();
             System.out.println(e.getMessage());
             return -1;
         }
@@ -115,7 +116,6 @@ public class ProductDAO implements DAO<Product> {
                 + item.getGenre() + "',sku" + " = '" + item.getSKU() + "'," + "price = " + item.getPrice() + "," +
                 " quantity = " + item.getQuantity() + " WHERE id = " + item.getId() + ";";
 
-        System.out.println(update);
         try {
             // execute query
             getConnection()

@@ -1,36 +1,55 @@
 package com.everythingstore.model;
 
-import java.util.ArrayList;
-
 public class Cart {
-    private ArrayList<Product> cartProducts;
+    
+    private int cartID;
+    private Product product;
+    private int quantity;
 
     public Cart() {
-        this.cartProducts = new ArrayList<>();
     }
 
-    public Cart(ArrayList<Product> cartProducts) {
-        this.cartProducts = cartProducts;
+    public Cart(Product product, int quantity) {
+        this.product = product;
+        this.quantity = quantity;
     }
 
-    public ArrayList<Product> getCartProducts() {
-        return cartProducts;
+    public Cart(int cartID, Product product, int quantity) {
+        this.cartID = cartID;
+        this.product = product;
+        this.quantity = quantity;
     }
 
-    public void setCartProducts(ArrayList<Product> cartProducts) {
-        this.cartProducts = cartProducts;
+    public int getCartID() {
+        return cartID;
     }
 
-    // add products
-    public void addCartProduct(Product product) {
-        if (!cartProducts.contains(product))
-            cartProducts.add(product);
+    public void setCartID(int cartID) {
+        this.cartID = cartID;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     @Override
     public String toString() {
         return "Cart{" +
-                "cartProducts=" + cartProducts +
+                "cartID=" + cartID +
+                ", product=" + product +
+                ", quantity=" + quantity +
                 '}';
     }
 }

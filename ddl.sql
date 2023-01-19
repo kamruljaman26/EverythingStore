@@ -48,7 +48,18 @@ create table customer
     customer_fore_name varchar(100),
     customer_sur_name  varchar(100),
     customer_address   int,
-    foreign key (customer_address) references address (id),
-    customer_tel_no    varchar(100)
+    customer_tel_no    varchar(100),
+    foreign key (customer_address) references address (id)
 );
 
+-- Cart Table
+-- private int cartProductID;
+-- private Product product;
+-- private int quantity;
+create table cart
+(
+    cart_id    integer primary key autoincrement,
+    product_id int unique not null,
+    quantity   int        not null,
+    foreign key (quantity) references product (id)
+);

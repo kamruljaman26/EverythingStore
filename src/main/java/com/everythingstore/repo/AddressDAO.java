@@ -98,7 +98,7 @@ public class AddressDAO implements DAO<Address> {
                     .prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 
             // execute query - return generated id
-            statement.execute();
+            statement.executeUpdate();
 
             ResultSet rs = statement.getGeneratedKeys();
             rs.next();
