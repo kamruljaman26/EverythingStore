@@ -9,7 +9,18 @@ public class Customer {
     private Address customerAddress;
     private String customerTelNo;
 
-    public Customer(int customerID, String customerForename, String customerSurname, Address customerAddress, String customerTelNo) {
+    public Customer() {
+    }
+
+    public Customer(String customerForename, String customerSurname, Address customerAddress, String customerTelNo) {
+        this.customerForename = customerForename;
+        this.customerSurname = customerSurname;
+        this.customerAddress = customerAddress;
+        this.customerTelNo = customerTelNo;
+    }
+
+    public Customer(int customerID, String customerForename, String customerSurname,
+                    Address customerAddress, String customerTelNo) {
         this.customerID = customerID;
         this.customerForename = customerForename;
         this.customerSurname = customerSurname;

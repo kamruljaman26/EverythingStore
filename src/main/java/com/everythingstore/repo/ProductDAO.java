@@ -138,7 +138,6 @@ public class ProductDAO implements DAO<Product> {
      * @throws SQLException ex
      */
     public boolean delete(int product_ID) throws SQLException {
-
         int result;
         String query = "DELETE FROM product WHERE id =" + product_ID + ";";
 
