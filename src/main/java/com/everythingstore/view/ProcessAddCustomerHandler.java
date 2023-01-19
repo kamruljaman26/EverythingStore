@@ -2,9 +2,10 @@ package com.everythingstore.view;
 
 import java.io.OutputStreamWriter;
 
+import com.everythingstore.model.Address;
 import com.everythingstore.model.Customer;
 import com.everythingstore.repo.CustomerDAO;
-import com.everythingstore.Util;
+import com.everythingstore.util.Util;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpExchange;
 
@@ -37,7 +38,8 @@ public class ProcessAddCustomerHandler implements HttpHandler {
         String customerTelNo = parms.get("customerTelNo");
 
         System.out.println("creating customer"); // Debugging message
-        Customer customer = new Customer(customerID, customerForename, customerSurname, customerAddress, customerTelNo);
+        // todo fix customer address
+        Customer customer = new Customer(customerID, customerForename, customerSurname, new Address(), customerTelNo);
         System.out.println("Customer to add" + customer);
 
         try {

@@ -133,7 +133,7 @@ public class ProductDAO implements DAO<Product> {
      */
     public boolean delete(int product_ID) throws SQLException {
 
-        int result = 0;
+        int result;
         String query = "DELETE FROM product WHERE id =" + product_ID + ";";
 
         result = getConnection()
@@ -141,5 +141,11 @@ public class ProductDAO implements DAO<Product> {
                 .executeUpdate(query);
 
         return result == 1;
+    }
+
+    public static void main(String[] args) throws SQLException {
+        ProductDAO dao = new ProductDAO();
+        System.out.println(dao.getAll());
+
     }
 }

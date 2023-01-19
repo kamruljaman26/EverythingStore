@@ -6,6 +6,7 @@ import com.everythingstore.util.DBConnection;
 import java.sql.*;
 import java.util.ArrayList;
 
+/*
 // import org.sqlite.JDBC;
 public class CustomerDAO {
 
@@ -202,6 +203,8 @@ public class CustomerDAO {
         }
     }
 }
+*/
+
 // -----------------------------------------------------------------------------------------------------
 
 //        public ArrayList<Product> getAllProducts;

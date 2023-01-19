@@ -3,7 +3,7 @@ package com.everythingstore.view;
 import java.io.OutputStreamWriter;
 
 import com.everythingstore.repo.ProductDAO;
-import com.everythingstore.Util;
+import com.everythingstore.util.Util;
 import com.everythingstore.model.Product;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpExchange;

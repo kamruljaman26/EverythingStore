@@ -1,4 +1,4 @@
-package com.everythingstore;
+package com.everythingstore.util;
 
 import java.util.HashMap;
 import java.io.UnsupportedEncodingException;

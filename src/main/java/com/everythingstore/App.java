@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import com.everythingstore.model.Address;
 import com.everythingstore.model.Customer;
 import com.everythingstore.model.Product;
 import com.everythingstore.repo.CustomerDAO;
@@ -206,7 +207,9 @@ public class App {
         customerAddress = scanner.nextLine();
         System.out.println("Please enter telephone number: ");
         customerTelNo = scanner.nextLine();
-        return new Customer(customerID, customerForename, customerSurname, customerAddress, customerTelNo);
+
+        // todo fixed address
+        return new Customer(customerID, customerForename, customerSurname, new Address(), customerTelNo);
     }
 
     private static Product updateProduct(Product up) {
@@ -269,7 +272,7 @@ public class App {
         int customerID;
         String customerForename;
         String customerSurname;
-        String customerAddress;
+        Address customerAddress;
         String customerTelNo;
 
         Scanner scanner = new Scanner(System.in);
@@ -287,8 +290,10 @@ public class App {
             customerSurname = up.getCustomerSurname();
 
         System.out.println("Update Address: ");
-        customerAddress = scanner.nextLine();
-        if (customerAddress.equals(""))
+//        customerAddress = scanner.nextLine();
+//        if (customerAddress.equals(""))
+            // todo: fix address type
+//            customerAddress = up.getCustomerAddress();
             customerAddress = up.getCustomerAddress();
 
         System.out.println("Update Telephone Number: ");
@@ -296,6 +301,7 @@ public class App {
         if (customerTelNo.equals(""))
             customerTelNo = up.getCustomerTelNo();
 
+        // todo: fix address type
         return new Customer(up.getCustomerID(), customerForename, customerSurname, customerAddress, customerTelNo);
     }
 }

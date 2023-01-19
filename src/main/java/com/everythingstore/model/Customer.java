@@ -1,18 +1,15 @@
 package com.everythingstore.model;
 
-import com.everythingstore.bckup.CustomerDAO;
 
 public class Customer {
 
     private int customerID;
     private String customerForename;
     private String customerSurname;
-    private String customerAddress;
+    private Address customerAddress;
     private String customerTelNo;
 
-
-
-    public Customer(int customerID, String customerForename, String customerSurname, String customerAddress, String customerTelNo) {
+    public Customer(int customerID, String customerForename, String customerSurname, Address customerAddress, String customerTelNo) {
         this.customerID = customerID;
         this.customerForename = customerForename;
         this.customerSurname = customerSurname;
@@ -44,11 +41,11 @@ public class Customer {
         this.customerSurname = customerSurname;
     }
 
-    public String getCustomerAddress() {
+    public Address getCustomerAddress() {
         return customerAddress;
     }
 
-    public void setCustomerAddress(String customerAddress) {
+    public void setCustomerAddress(Address customerAddress) {
         this.customerAddress = customerAddress;
     }
 
@@ -68,12 +65,5 @@ public class Customer {
                 + "\n Customer Surname: " + customerSurname
                 + "\n Customer Address: " + customerAddress
                 + "\n Telelphone Number: " + customerTelNo;
-    }
-
-    public void addCustomer(CustomerDAO customer) {
-    }
-
-    public void updateCustomer(CustomerDAO customer) {
-
     }
 }

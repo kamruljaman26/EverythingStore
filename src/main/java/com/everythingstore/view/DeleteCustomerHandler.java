@@ -4,7 +4,7 @@ import java.io.OutputStreamWriter;
 
 import com.everythingstore.model.Customer;
 import com.everythingstore.repo.CustomerDAO;
-import com.everythingstore.Util;
+import com.everythingstore.util.Util;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpExchange;
 

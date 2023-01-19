@@ -6,9 +6,13 @@ import java.sql.SQLException;
 
 public class DBConnection {
 
-    // static connection
+    // static db connection
     private static Connection dbConnection = null;
 
+    /**
+     *
+     * @return db connection with sqlite
+     */
     public static Connection getDBConnection() {
 
         // if connection already establish

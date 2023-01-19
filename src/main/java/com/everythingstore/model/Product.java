@@ -1,7 +1,5 @@
 package com.everythingstore.model;
 
-import com.everythingstore.repo.ProductDAO;
-
 import java.util.Objects;
 
 public class Product {
@@ -13,7 +11,6 @@ public class Product {
     private String SKU;
     private double price;
     private int quantity;
-
 
     public Product(int ID, String category, String artist, String album,
                    String genre, String SKU, double price, int quantity) {

@@ -21,6 +21,24 @@ public class Address {
         this.postcode = postcode;
     }
 
+    public Address(int id, String houseNo, String addressLine1, String addressLine2,
+                   String country, String postcode) {
+        this.id = id;
+        this.houseNo = houseNo;
+        this.addressLine1 = addressLine1;
+        this.addressLine2 = addressLine2;
+        this.country = country;
+        this.postcode = postcode;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getHouseNo() {
         return houseNo;
     }

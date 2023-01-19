@@ -1,9 +1,6 @@
 package com.everythingstore.repo;
 
 import com.everythingstore.model.Order;
-import com.everythingstore.util.DBConnection;
-
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
