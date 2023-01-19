@@ -5,10 +5,7 @@ import com.everythingstore.repo.ProductDAO;
 import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
-import org.junit.runner.OrderWith;
 import org.junit.runners.MethodSorters;
-import org.junit.runners.Parameterized;
-
 import java.sql.SQLException;
 
 import static org.junit.Assert.*;
@@ -68,6 +65,4 @@ public class ProductDaoTest {
         assertTrue(status);
         assertNull(productDAO.get(productID));
     }
-
-
 }

@@ -7,7 +7,7 @@
 -- private String SKU;
 -- private double price;
 -- private int quantity;
-create table Product
+create table product
 (
     id       integer primary key autoincrement,
     category varchar(30),
@@ -28,7 +28,7 @@ create table Product
 -- private String postcode;
 create table address
 (
-    id             int primary key autoincrement,
+    id             integer primary key autoincrement,
     house_no       varchar(20),
     address_line_1 varchar(255),
     address_line_2 varchar(255),
@@ -44,7 +44,7 @@ create table address
 -- private String customerTelNo;
 create table customer
 (
-    customer_id        int primary key autoincrement,
+    customer_id        integer primary key autoincrement,
     customer_fore_name varchar(100),
     customer_sur_name  varchar(100),
     customer_address   int,
