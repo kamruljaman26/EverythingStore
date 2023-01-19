@@ -63,3 +63,29 @@ create table cart
     quantity   int        not null,
     foreign key (quantity) references product (id)
 );
+
+-- Order Table
+-- private int order_id;
+-- private Customer customer;
+-- private ArrayList<OrderProduct> products;
+create table order_
+(
+    order_id    integer primary key autoincrement,
+    customer_id int not null,
+    foreign key (customer_id) references customer (customer_id)
+);
+
+-- Order Products Table
+-- private int orderProductID;
+-- private int orderID;
+-- private Product product;
+-- private int quantity;
+create table order_product
+(
+    order_product_id integer primary key autoincrement,
+    order_id         int not null,
+    product_id       int not null,
+    quantity         int,
+    foreign key (order_id) references order_ (order_id),
+    foreign key (product_id) references product (id)
+);

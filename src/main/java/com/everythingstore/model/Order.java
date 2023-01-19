@@ -6,9 +6,18 @@ public class Order {
 
     private int order_id;
     private Customer customer;
-    private ArrayList<Product> products;
+    private ArrayList<OrderProduct> products;
 
-    public Order(Customer customer, ArrayList<Product> products) {
+    public Order() {
+    }
+
+    public Order(Customer customer, ArrayList<OrderProduct> products) {
+        this.customer = customer;
+        this.products = products;
+    }
+
+    public Order(int order_id, Customer customer, ArrayList<OrderProduct> products) {
+        this.order_id = order_id;
         this.customer = customer;
         this.products = products;
     }
@@ -29,11 +38,11 @@ public class Order {
         this.customer = customer;
     }
 
-    public ArrayList<Product> getProducts() {
+    public ArrayList<OrderProduct> getProducts() {
         return products;
     }
 
-    public void setProducts(ArrayList<Product> products) {
+    public void setProducts(ArrayList<OrderProduct> products) {
         this.products = products;
     }
 

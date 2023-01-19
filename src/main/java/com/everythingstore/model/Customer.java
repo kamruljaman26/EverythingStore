@@ -1,6 +1,8 @@
 package com.everythingstore.model;
 
 
+import java.util.Objects;
+
 public class Customer {
 
     private int customerID;
@@ -68,7 +70,20 @@ public class Customer {
         this.customerTelNo = customerTelNo;
     }
 
-/*    @Override
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Customer customer = (Customer) o;
+        return customerID == customer.customerID;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(customerID);
+    }
+
+    /*    @Override
     public String toString() {
         return "Customer: "
                 + "\n Customer ID: " + customerID
