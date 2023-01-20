@@ -54,10 +54,10 @@ public class App {
                 case "6" -> manager.searchCustomerByID();
 
                 // search cart by id
-//                case "7" -> manager.searchCustomerByID();
+                case "7" -> manager.searchCartByID();
 
                 // search order by id
-//                case "8" -> manager.searchCustomerByID();
+                case "8" -> manager.searchOrderByID();
 
                 case "9" -> {
                     System.out.println("\nCreate new product: ");

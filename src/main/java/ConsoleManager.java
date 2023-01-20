@@ -118,13 +118,39 @@ public class ConsoleManager {
 
     // search customer by id
     public void searchCustomerByID() throws SQLException {
-        System.out.println("\nSearch by customer ID: ");
+        System.out.print("\nSearch by customer ID: ");
         int cID = Integer.parseInt(scanner.nextLine());
         Customer customer = customerDAO.get(cID);
         if (customer != null) {
             System.out.println(customer);
         } else {
             System.out.println("Customer not found by id=" + cID);
+        }
+        System.out.println();
+    }
+
+    // search cart by id
+    public void searchCartByID() throws SQLException {
+        System.out.print("\nSearch by cart ID: ");
+        int cID = Integer.parseInt(scanner.nextLine());
+        Cart cart = cartDAO.get(cID);
+        if (cart != null) {
+            System.out.println(cart);
+        } else {
+            System.out.println("Cart not found by id=" + cID);
+        }
+        System.out.println();
+    }
+
+    // search order by id
+    public void searchOrderByID() throws SQLException {
+        System.out.print("\nSearch by order ID: ");
+        int orderID = Integer.parseInt(scanner.nextLine());
+        Order order = orderDAO.get(orderID);
+        if (order != null) {
+            System.out.println(order);
+        } else {
+            System.out.println("Cart not found by id=" + orderID);
         }
         System.out.println();
     }
