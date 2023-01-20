@@ -61,13 +61,14 @@ public class Order {
         StringBuilder sb = new StringBuilder();
 
         // order details
-        sb.append("Order Details").append("\n Order ID:")
-                .append(order_id).append(", Customer Details: ").append(customer.toString())
-                .append("\n Products: \n");
+        sb.append("Order Details -------------- ")
+                .append("\n  Order ID:").append(order_id).append(", Total Price: ").append(getTotalPrice()).append("$")
+                .append("\n  ").append(customer.toString()).append("\n")
+                .append("  Products: \n");
 
         final int[] count = {1};
         products.forEach(p -> {
-            sb.append("\t").append(count[0]).append(": ").append(p.toString()).append("\n");
+            sb.append("\t  ").append(count[0]).append(": ").append(p.toString()).append("\n");
             count[0]++;
         });
 
