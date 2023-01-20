@@ -1,7 +1,4 @@
-import model.Cart;
-import model.Customer;
-import model.Order;
-import model.Product;
+import model.*;
 import repo.*;
 
 import java.sql.SQLException;
@@ -153,5 +150,75 @@ public class ConsoleManager {
             System.out.println("Cart not found by id=" + orderID);
         }
         System.out.println();
+    }
+
+    // create new product
+    public void createNewProduct() throws SQLException {
+        System.out.println("\nCreate new product: ");
+
+        String category;
+        String artist;
+        String album;
+        String genre;
+        String SKU;
+        double price;
+        int quantity;
+
+        System.out.println("Please enter Category: ");
+        category = scanner.nextLine();
+        System.out.println("Please enter Artist: ");
+        artist = scanner.nextLine();
+        System.out.println("Please enter Album: ");
+        album = scanner.nextLine();
+        System.out.println("Please enter Genre: ");
+        genre = scanner.nextLine();
+        System.out.println("Please enter SKU: ");
+        SKU = scanner.nextLine();
+        System.out.println("Please enter Price: ");
+        price = Double.parseDouble(scanner.nextLine());
+        System.out.println("Please enter Quantity: ");
+        quantity = Integer.parseInt(scanner.nextLine());
+
+        Product products = new Product(category, artist, album, genre, SKU, price, quantity);
+
+        int productID = productDAO.add(products);
+        System.out.println("\nProduct added successfully, create product ID is (" + productID + ")");
+    }
+
+    // create new customer
+    public void createNewCustomer() throws SQLException {
+        System.out.println("\nCreate new customer: ");
+
+        String customerForename;
+        String customerSurname;
+        Address customerAddress = new Address();
+        String customerTelNo;
+
+        // customer info part
+        System.out.print("Please enter customer forename: ");
+        customerForename = scanner.nextLine();
+        System.out.print("Please enter customer surname: ");
+        customerSurname = scanner.nextLine();
+        System.out.print("Please enter telephone number: ");
+        customerTelNo = scanner.nextLine();
+
+        // address part
+        System.out.println("Please enter address: ");
+        System.out.print("\t Enter house no: ");
+        customerAddress.setHouseNo(scanner.nextLine());
+        System.out.print("\t Enter address line 1: ");
+        customerAddress.setAddressLine1(scanner.nextLine());
+        System.out.print("\t Enter address line 2: ");
+        customerAddress.setAddressLine2(scanner.nextLine());
+        System.out.print("\t Enter country: ");
+        customerAddress.setCountry(scanner.nextLine());
+        System.out.print("\t Enter postcode: ");
+        customerAddress.setPostcode(scanner.nextLine());
+
+        // create and print successful message
+        Customer customerA = new Customer(customerForename,
+                customerSurname, customerAddress, customerTelNo);
+        int customerID = customerDAO.add(customerA);
+        System.out.println("\nCustomer added successfully, create product ID is (" + customerID + ")");
     }
 }

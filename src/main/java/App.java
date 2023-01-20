@@ -59,20 +59,12 @@ public class App {
                 // search order by id
                 case "8" -> manager.searchOrderByID();
 
-                case "9" -> {
-                    System.out.println("\nCreate new product: ");
-                    Product products = createProduct();
-                    product.add(products);
-                    System.out.println("");
-                    break;
-                }
-                case "10" -> {
-                    System.out.println("\nCreate new customer: ");
-                    Customer customerA = createCustomer();
-                    customers.add(customerA);
-                    System.out.println();
-                    break;
-                }
+                // create new product
+                case "9" -> manager.createNewProduct();
+
+                // create new customer
+                case "10" -> manager.createNewCustomer();
+
                 case "11" -> {
                     System.out.println("\nUpdate product: ");
                     System.out.println("Enter product ID: ");
@@ -111,63 +103,6 @@ public class App {
         } while (!options.equals("17"));
     }
 
-    // create product
-    private static Product createProduct() {
-        int ID;
-        String category;
-        String artist;
-        String album;
-        String genre;
-        String SKU;
-        double price;
-        int quantity;
-
-        Scanner scanner = new Scanner(System.in); //close
-
-        System.out.println("Please enter ID: ");
-        ID = Integer.parseInt(scanner.nextLine());
-        System.out.println("Please enter Category: ");
-        category = scanner.nextLine();
-        System.out.println("Please enter Artist: ");
-        artist = scanner.nextLine();
-        System.out.println("Please enter Album: ");
-        album = scanner.nextLine();
-        System.out.println("Please enter Genre: ");
-        genre = scanner.nextLine();
-        System.out.println("Please enter SKU: ");
-        SKU = scanner.nextLine();
-        System.out.println("Please enter Price: ");
-        price = Double.parseDouble(scanner.nextLine());
-        System.out.println("Please enter Quantity: ");
-        quantity = Integer.parseInt(scanner.nextLine());
-
-        return new Product(ID, category, artist, album, genre, SKU, price, quantity);
-    }
-
-    // create customer
-    private static Customer createCustomer() {
-        int customerID;
-        String customerForename;
-        String customerSurname;
-        String customerAddress;
-        String customerTelNo;
-
-        Scanner scanner = new Scanner(System.in); //close
-
-        System.out.println("Please enter ID: ");
-        customerID = Integer.parseInt(scanner.nextLine());
-        System.out.println("Please enter customer forename: ");
-        customerForename = scanner.nextLine();
-        System.out.println("Please enter customer surname: ");
-        customerSurname = scanner.nextLine();
-        System.out.println("Please enter address: ");
-        customerAddress = scanner.nextLine();
-        System.out.println("Please enter telephone number: ");
-        customerTelNo = scanner.nextLine();
-
-        // todo fixed address
-        return new Customer(customerID, customerForename, customerSurname, new Address(), customerTelNo);
-    }
 
     // update product
     private static Product updateProduct(Product up) {
