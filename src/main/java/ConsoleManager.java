@@ -221,4 +221,162 @@ public class ConsoleManager {
         int customerID = customerDAO.add(customerA);
         System.out.println("\nCustomer added successfully, create product ID is (" + customerID + ")");
     }
+
+    // update a product
+    public void updateProduct() throws SQLException {
+        System.out.println("\nUpdate product: ");
+        System.out.println("Enter product ID: ");
+
+        int xID = Integer.parseInt(scanner.nextLine());
+        Product product = productDAO.get(xID);
+
+        if (product == null) {
+            System.out.println("Product not found by id=" + xID + "");
+            return;
+        }
+
+        System.out.println(productDAO.get(xID));
+
+        String category;
+        String artist;
+        String album;
+        String genre;
+        String SKU;
+        double price;
+        int quantity;
+
+        System.out.println("Update product with product ID: " + product.getId());
+
+        System.out.print("Update category: ");
+        category = scanner.nextLine();
+        if (category.equals(""))
+            category = product.getCategory();
+
+        System.out.print("Update artist: ");
+        artist = scanner.nextLine();
+        if (artist.equals(""))
+            artist = product.getArtist();
+
+        System.out.print("Update album title: ");
+        album = scanner.nextLine();
+        if (album.equals(""))
+            album = product.getAlbum();
+
+        System.out.print("Update genre: ");
+        genre = scanner.nextLine();
+        if (genre.equals(""))
+            genre = product.getGenre();
+
+        System.out.print("Update SKU: ");
+        SKU = scanner.nextLine();
+        if (SKU.equals(""))
+            SKU = product.getSKU();
+
+        System.out.print("Update price: ");
+        String cvprice = scanner.nextLine();
+        if (cvprice.equals(""))
+            price = product.getPrice();
+        else
+            price = Double.parseDouble(cvprice);
+
+        System.out.print("Update quantity: ");
+        String cvquantity = scanner.nextLine();
+        if (cvquantity.equals(""))
+            quantity = product.getQuantity();
+        else
+            quantity = Integer.parseInt(cvquantity);
+
+        // update product
+        Product up = new Product(product.getId(), category, artist, album, genre, SKU, price, quantity);
+        productDAO.update(up);
+
+        System.out.println("Updated " + up);
+    }
+
+    // update customer
+    public void updateCustomer() throws SQLException {
+
+        System.out.println("\nUpdate customer: ");
+        System.out.print("Enter customer ID: ");
+        int cUID = Integer.parseInt(scanner.next());
+
+        Customer customer = customerDAO.get(cUID);
+        if (customer == null) {
+            System.out.println("Customer not found by id=" + cUID);
+            return;
+        }
+        System.out.println("\n" + customer);
+
+        String customerForename;
+        String customerSurname;
+        String customerTelNo;
+
+        System.out.println("Update customer with customer ID: " + customer.getCustomerID());
+
+        System.out.print("Update Forename: ");
+        scanner.nextLine();
+        customerForename = scanner.nextLine();
+        if (customerForename.equals(""))
+            customerForename = customer.getCustomerForename();
+
+        System.out.print("Update Surname: ");
+        customerSurname = scanner.nextLine();
+        if (customerSurname.equals(""))
+            customerSurname = customer.getCustomerSurname();
+
+        System.out.print("Update Telephone Number: ");
+        customerTelNo = scanner.nextLine();
+        if (customerTelNo.equals(""))
+            customerTelNo = customer.getCustomerTelNo();
+
+        String houseNo;
+        String addressLine1;
+        String addressLine2;
+        String country;
+        String postcode;
+
+        // --------- address part
+        System.out.print("\nUpdate Address Details: \n");
+        Address address = customer.getCustomerAddress();
+
+        System.out.print("\t Enter House No: ");
+        houseNo = scanner.nextLine();
+        if (houseNo.equals(""))
+            houseNo = address.getHouseNo();
+
+        System.out.print("\t Enter Address Line 1: ");
+        addressLine1 = scanner.nextLine();
+        if (addressLine1.equals(""))
+            addressLine1 = address.getAddressLine1();
+
+        System.out.print("\t Enter Address Line 2: ");
+        addressLine2 = scanner.nextLine();
+        if (addressLine2.equals(""))
+            addressLine2 = address.getAddressLine2();
+
+        System.out.print("\t Enter Country: ");
+        country = scanner.nextLine();
+        if (country.equals(""))
+            country = address.getCountry();
+
+        System.out.print("\t Enter Postcode: ");
+        postcode = scanner.nextLine();
+        if (postcode.equals(""))
+            postcode = address.getCountry();
+
+        address.setHouseNo(houseNo);
+        address.setAddressLine1(addressLine1);
+        address.setAddressLine2(addressLine2);
+        address.setCountry(country);
+        address.setPostcode(postcode);
+
+        customer.setCustomerSurname(customerSurname);
+        customer.setCustomerForename(customerForename);
+        customer.setCustomerTelNo(customerTelNo);
+
+        customer.setCustomerAddress(address);
+        customerDAO.update(customer);
+
+        System.out.println("Updated " + customer);
+    }
 }
