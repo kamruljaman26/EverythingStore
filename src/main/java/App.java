@@ -47,37 +47,33 @@ public class App {
                 // print orders
                 case "4" -> manager.printOrdersList();
 
-//                -----
-                case "5" -> {
-                    System.out.println("\nSearch by product ID: ");
-                    int ID = Integer.parseInt(scanner.nextLine());
-                    System.out.println(product.get(ID));
-                    System.out.println();
-                    break;
-                    //case "3" -> System.out.println("List of all orders");
-                }
-                case "6" -> {
-                    System.out.println("\nSearch by customer ID: ");
-                    int cID = Integer.parseInt(scanner.nextLine());
-                    System.out.println(customers.get(cID));
-                    System.out.println();
-                    break;
-                }
-                case "7" -> {
+                // search product by id
+                case "5" -> manager.searchProductByID();
+
+                // search customer by id
+                case "6" -> manager.searchCustomerByID();
+
+                // search cart by id
+//                case "7" -> manager.searchCustomerByID();
+
+                // search order by id
+//                case "8" -> manager.searchCustomerByID();
+
+                case "9" -> {
                     System.out.println("\nCreate new product: ");
                     Product products = createProduct();
                     product.add(products);
                     System.out.println("");
                     break;
                 }
-                case "8" -> {
+                case "10" -> {
                     System.out.println("\nCreate new customer: ");
                     Customer customerA = createCustomer();
                     customers.add(customerA);
                     System.out.println();
                     break;
                 }
-                case "9" -> {
+                case "11" -> {
                     System.out.println("\nUpdate product: ");
                     System.out.println("Enter product ID: ");
                     int xID = Integer.parseInt(scanner.nextLine());
@@ -86,7 +82,7 @@ public class App {
                     product.update(updatedProduct);
                     break;
                 }
-                case "10" -> {
+                case "12" -> {
                     System.out.println("\nUpdate customer: ");
                     System.out.println("Enter customer ID: ");
                     int cUID = Integer.parseInt(scanner.next());
@@ -94,25 +90,25 @@ public class App {
                     Customer updatedCustomer = updateCustomer(customers.get(cUID));
                     customers.update(updatedCustomer);
                 }
-                case "11" -> System.out.println("Amend order");
-                case "12" -> {
+                case "13" -> System.out.println("Amend order");
+                case "14" -> {
                     System.out.println("Delete product");
                     System.out.println("Enter product ID to be deleted: ");
                     int dID = Integer.parseInt(scanner.nextLine());
                     product.delete(dID);
                 }
-                case "13" -> {
+                case "15" -> {
                     System.out.println("Delete customer");
                     System.out.println("Enter customer ID to be deleted: ");
                     int cdID = Integer.parseInt(scanner.nextLine());
                     customers.delete(cdID);
                 }
-                case "14" -> System.out.println("Delete orders");
-                case "15" -> System.out.println("Exit");
+                case "16" -> System.out.println("Delete orders");
+                case "17" -> System.out.println("Exit");
                 default -> System.out.println("Invalid option, please re-enter");
             }
 
-        } while (!options.equals("15"));
+        } while (!options.equals("17"));
     }
 
     // create product

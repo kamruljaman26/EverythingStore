@@ -18,9 +18,10 @@ public class MyHttpServer implements Runnable {
             // HTTP Server & View Links
             HttpServer server =
                     HttpServer.create(new InetSocketAddress(PORT), 0);
+
             server.createContext("/", new RootHandler());
             server.createContext("/products", new DisplayAllProductHandler());
-            //server.createContext("/searchProduct", new SearchProductHandler() );
+            // server.createContext("/searchProduct", new SearchProductHandler() );
             server.createContext("/delete", new DeleteProductHandler());
             server.createContext("/add", new AddProductHandler());
             server.createContext("/processAddProduct", new ProcessAddProductHandler());
@@ -29,8 +30,11 @@ public class MyHttpServer implements Runnable {
             server.createContext("/deleteCustomer", new DeleteCustomerHandler());
             server.createContext("/addCustomer", new AddCustomerHandler());
             server.createContext("/processAddCustomer", new ProcessAddCustomerHandler());
+
+            // start
             server.setExecutor(null);
             server.start();
+
             System.out.println("The server is listening on port " + PORT);
         } catch (IOException e) {
             e.printStackTrace();
