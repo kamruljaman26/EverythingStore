@@ -57,7 +57,7 @@ public class DisplayAllProductHandler implements HttpHandler {
                                 "    <td>" + p.getSKU() + "</td>" +
                                 "    <td>" + p.getPrice() + "</td>" +
                                 "    <td>" + p.getQuantity() + "</td>" +
-                                "<td><a href=\"/delete?id=" + p.getId() + "\"> delete </a><td>" +
+                                "<td><a href=\"/delete-product?id=" + p.getId() + "\"> delete </a><td>" +
                                 "  </tr>"
                 );
             }

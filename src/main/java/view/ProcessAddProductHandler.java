@@ -17,36 +17,35 @@ public class ProcessAddProductHandler implements HttpHandler {
     @Override
     public void handle(HttpExchange he) throws IOException {
         try {
-        he.sendResponseHeaders(200, 0);
-        BufferedWriter out = new BufferedWriter(
-                new OutputStreamWriter(he.getResponseBody()));
+            he.sendResponseHeaders(200, 0);
+            BufferedWriter out = new BufferedWriter(
+                    new OutputStreamWriter(he.getResponseBody()));
 
-        // Get param from URL
-        Map<String, String> parms = Util.requestStringToMap
-                (he.getRequestURI().getQuery());
+            // Get param from URL
+            Map<String, String> parms = Util.requestStringToMap
+                    (he.getRequestURI().getQuery());
 
-        // print the params for debugging
-        System.out.println(parms);
+            // print the params for debugging
+            System.out.println(parms);
 
-        //get ID number
-        ProductDAO products = new ProductDAO();
+            //get ID number
+            ProductDAO products = new ProductDAO();
 
-        System.out.println("about to get data");
-        int ID = Integer.parseInt(parms.get("id"));
-        String category = parms.get("category");
-        String artist = parms.get("artist");
-        String album = parms.get("album");
-        String genre = parms.get("genre");
-        String sku = parms.get("sku");
-        int price = Integer.parseInt(parms.get("price"));
-        int quantity = Integer.parseInt(parms.get("quantity"));
+            System.out.println("about to get data");
+            String category = parms.get("category");
+            String artist = parms.get("artist");
+            String album = parms.get("album");
+            String genre = parms.get("genre");
+            String sku = parms.get("sku");
+            int price = Integer.parseInt(parms.get("price"));
+            int quantity = Integer.parseInt(parms.get("quantity"));
 
-        System.out.println("creating product"); // Debugging message
-        Product product = new Product(ID, category, artist, album, genre, sku, price, quantity);
-        System.out.println("Product to add" + product);
+            System.out.println("creating product"); // Debugging message
+            Product product = new Product(category, artist, album, genre, sku, price, quantity);
+            System.out.println("Product to add" + product);
 
-
-            products.add(product); // add to database
+            int productID = products.add(product);// add to database
+            product.setId(productID);
 
             out.write(
                     "<html>" +

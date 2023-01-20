@@ -51,7 +51,7 @@ public class DisplayAllCustomerHandler implements HttpHandler {
                                 "    <td>" + c.getCustomerAddress() + "</td>" +
                                 "    <td>" + c.getCustomerTelNo() + "</td>" +
 
-                                "<td><a href=\"/deleteCustomer?id=" + c.getCustomerID() + "\"> delete </a><td>" +
+                                "<td><a href=\"/delete-customer?id=" + c.getCustomerID() + "\"> delete </a><td>" +
                                 "  </tr>"
                 );
             }

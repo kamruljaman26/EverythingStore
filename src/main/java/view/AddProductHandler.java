@@ -25,11 +25,8 @@ public class AddProductHandler implements HttpHandler {
                         "<body>" +
                         "<div class=\"container\">" +
                         "<h1> Add Product </h1>" +
-                        "<form method=\"get\" action=\"/processAddProduct\">" +
+                        "<form method=\"get\" action=\"/process-add-product\">" +
                         "<div class=\"form-group\"> " +
-
-                        "<label for=\"ID\">ID</label> " +
-                        "<input type=\"text\" class=\"form-control\" name=\"id\" id=\"id\"> " +
 
                         "<label for=\"category\">Category</label> " +
                         "<input type=\"text\" class=\"form-control\" name=\"category\" id=\"category\"> " +
@@ -51,8 +48,7 @@ public class AddProductHandler implements HttpHandler {
 
                         "<label for=\"quantity\">Quantity</label> " +
                         "<input type=\"text\" class=\"form-control\" name=\"quantity\" id=\"quantity\" >" +
-
-                        "<button type=\"submit\" class=\"btn btn-primary\">Submit</button> " +
+                        "<br>" + "<button type=\"submit\" class=\"btn btn-primary\">Submit</button> " +
                         "</div>" +
                         "</form>" +
                         "<a href=\"/\"> Back to List </a>" +

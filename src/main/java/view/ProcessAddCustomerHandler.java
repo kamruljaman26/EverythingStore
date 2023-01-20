@@ -31,19 +31,23 @@ public class ProcessAddCustomerHandler implements HttpHandler {
         CustomerDAO customers = new CustomerDAO();
 
         //System.out.println("about to get data");
-        int customerID = Integer.parseInt(parms.get("customerid"));
         String customerForename = parms.get("customerforename");
         String customerSurname = parms.get("customersurname");
-        String customerAddress = parms.get("customeraddress");
-        String customerTelNo = parms.get("customerTelNo");
+        String customerTelNo = parms.get("customertelno");
 
-        System.out.println("creating customer"); // Debugging message
-        // todo fix customer address
-        Customer customer = new Customer(customerID, customerForename, customerSurname, new Address(), customerTelNo);
+        String houseNo = parms.get("houseno");
+        String addressLine1 = parms.get("line1");
+        String addressLine2 = parms.get("line2");
+        String country = parms.get("country");
+        String postcode = parms.get("postcode");
+
+        Address address = new Address(houseNo, addressLine1, addressLine2, country, postcode);
+        Customer customer = new Customer(customerForename, customerSurname, address, customerTelNo);
         System.out.println("Customer to add" + customer);
 
         try {
-            customers.add(customer); // add to database
+            int customerID = customers.add(customer);// add to database
+            customer = customers.get(customerID);
 
             out.write(
                     "<html>" +

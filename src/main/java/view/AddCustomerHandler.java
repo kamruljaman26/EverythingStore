@@ -28,25 +28,43 @@ public class AddCustomerHandler implements HttpHandler {
                         "<body>" +
                         "<div class=\"container\">" +
                         "<h1> Add Customer </h1>" +
-                        "<form method=\"get\" action=\"/processAddProduct\">" +
+                        "<form method=\"get\" action=\"/process-add-customer\">" +
                         "<div class=\"form-group\"> " +
 
-                        "<label for=\"customerid\">Customer ID</label> " +
-                        "<input type=\"text\" class=\"form-control\" name=\"customerid\" id=\"customerid\"> " +
-
+                        // fore name
                         "<label for=\"customer forename\">Customer Forename</label> " +
                         "<input type=\"text\" class=\"form-control\" name=\"customerforename\" id=\"customerforename\"> " +
 
+                        // sur name
                         "<label for=\"customer surname\">Customer Surname</label> " +
                         "<input type=\"text\" class=\"form-control\" name=\"customersurname\" id=\"customersurname\"> " +
 
-                        "<label for=\"customer address\">Customer Address</label> " +
-                        "<input type=\"text\" class=\"form-control\" name=\"customeraddress\" id=\"customeraddress\"> " +
-
+                        // telephone number
                         "<label for=\"customer tel no\">Customer Telephone Number</label> " +
                         "<input type=\"text\" class=\"form-control\" name=\"customertelno\" id=\"customertelno\"> " +
 
-                        "<button type=\"submit\" class=\"btn btn-primary\">Submit</button> " +
+                        // address section - house no
+                        "<label for=\"houseno\">House No</label> " +
+                        "<input type=\"text\" class=\"form-control\" name=\"houseno\" id=\"houseno\"> " +
+
+                        // address section - line 1
+                        "<label for=\"line1\">Address Line 1</label> " +
+                        "<input type=\"text\" class=\"form-control\" name=\"line1\" id=\"line1\"> " +
+
+                        // address section - line 2
+                        "<label for=\"line2\">Address Line 2</label> " +
+                        "<input type=\"text\" class=\"form-control\" name=\"line2\" id=\"line2\"> " +
+
+                        // address section - country
+                        "<label for=\"country\">Country</label> " +
+                        "<input type=\"text\" class=\"form-control\" name=\"country\" id=\"country\"> " +
+
+                        // address section - postcode
+                        "<label for=\"postcode\">Postcode</label> " +
+                        "<input type=\"text\" class=\"form-control\" name=\"postcode\" id=\"postcode\"> " +
+
+
+                        "<br><button type=\"submit\" class=\"btn btn-primary\">Submit</button> " +
                         "</div>" +
                         "</form>" +
                         "<a href=\"/\"> Back to List </a>" +

@@ -16,20 +16,31 @@ public class MyHttpServer implements Runnable {
     public void run() {
         try {
             // HTTP Server & View Links
-            HttpServer server =
-                    HttpServer.create(new InetSocketAddress(PORT), 0);
+            HttpServer server = HttpServer.create(new InetSocketAddress(PORT), 0);
 
+            // home
             server.createContext("/", new RootHandler());
+
+            // view products and customer
             server.createContext("/products", new DisplayAllProductHandler());
-            // server.createContext("/searchProduct", new SearchProductHandler() );
-            server.createContext("/delete", new DeleteProductHandler());
-            server.createContext("/add", new AddProductHandler());
-            server.createContext("/processAddProduct", new ProcessAddProductHandler());
             server.createContext("/customers", new DisplayAllCustomerHandler());
+
+            // add products and customer
+            server.createContext("/add-product", new AddProductHandler());
+            server.createContext("/add-customer", new AddCustomerHandler());
+
+            // search products and customer
+            // server.createContext("/searchProduct", new SearchProductHandler() );
             // server.createContext("/searchCustomer", new SearchCustomerHandler() );
-            server.createContext("/deleteCustomer", new DeleteCustomerHandler());
-            server.createContext("/addCustomer", new AddCustomerHandler());
-            server.createContext("/processAddCustomer", new ProcessAddCustomerHandler());
+
+            // delete
+            server.createContext("/delete-product", new DeleteProductHandler());
+            server.createContext("/delete-customer", new DeleteCustomerHandler());
+
+            // data process handler
+            server.createContext("/process-add-customer", new ProcessAddCustomerHandler());
+            server.createContext("/process-add-product", new ProcessAddProductHandler());
+
 
             // start
             server.setExecutor(null);
