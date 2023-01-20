@@ -30,7 +30,7 @@ public class CartDaoTest {
             product.setCategory("Category");
             product.setArtist("Artist");
             product.setGenre("Genre");
-            product.setSKU("SKU-CartTest-6");
+            product.setSKU("SKU-CartTest-9");
             product.setPrice(200);
             product.setQuantity(100);
 
