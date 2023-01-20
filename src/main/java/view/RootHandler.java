@@ -29,6 +29,10 @@ public class RootHandler implements HttpHandler {
                         "<a href=\"/products\">Display Products</a> " +
                         "<br>" +
                         "<a href=\"/customers\">Display Customers</a> " +
+                        "<br>" +
+                        "<a href=\"/carts\">Display Carts</a> " +
+                        "<br>" +
+                        "<a href=\"/orders\">Display Orders</a> " +
 
 /*                        // search products, customer
                         "<br>" + "<br>" +
@@ -41,6 +45,7 @@ public class RootHandler implements HttpHandler {
                         "<a href=\"/add-product\">Add Product</a> " +
                         "<br>" +
                         "<a href=\"/add-customer\">Add Customer</a> " +
+
 
 
                         "</div>" + "</body>" + "</html>"

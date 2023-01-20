@@ -71,7 +71,7 @@ public class DeleteCustomerHandler implements HttpHandler {
             out.write(
                     "</tbody>" +
                             "</table>" +
-                            "<a href=\"/\"> Back to Menu </a>" +
+                            "<a href=\"/customers\"> Back to Menu </a>" +
                             "</body>" +
                             "</html>");
         } catch (SQLException se) {

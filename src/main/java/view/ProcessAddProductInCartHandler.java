@@ -3,20 +3,21 @@ package view;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import model.Cart;
-import model.Customer;
+import model.Product;
 import repo.CartDAO;
-import repo.CustomerDAO;
+import repo.ProductDAO;
 import util.Util;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-import java.sql.SQLException;
 import java.util.Map;
 
-public class DeleteCartHandler implements HttpHandler {
+public class ProcessAddProductInCartHandler implements HttpHandler {
+    @Override
     public void handle(HttpExchange he) throws IOException {
         he.sendResponseHeaders(200, 0);
+
         BufferedWriter out = new BufferedWriter(
                 new OutputStreamWriter(he.getResponseBody()));
 
@@ -27,30 +28,32 @@ public class DeleteCartHandler implements HttpHandler {
         // print the params for debugging
         System.out.println(parms);
 
-        //get ID number
-        int ID = Integer.parseInt(parms.get("id"));
-
         CartDAO cartDAO = new CartDAO();
+        ProductDAO productDAO = new ProductDAO();
+        System.out.println("about to get data");
+        String productID = parms.get("productid");
+        int quantity = Integer.parseInt(parms.get("quantity"));
 
         try {
-            // get the dvd details before we delete from the Database
-            Cart cart = cartDAO.get(ID);
-            // actually delete from database;
-            cartDAO.delete(ID);
+            Product product = productDAO.get(Integer.parseInt(productID));
+            Cart cart = new Cart(product, quantity);
+            int cartID = cartDAO.add(cart);
+            cart.setCartID(cartID);
+            cart = cartDAO.get(cartID);
 
             out.write(
                     "<html>" +
-                            "<head> <title>Customer Library</title> " +
+                            "<head> <title>Product Library</title> " +
                             "<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css\" integrity=\"sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2\" crossorigin=\"anonymous\">" +
                             "</head>" +
                             "<body>" +
-                            "<h1> Cart Deleted </h1>" +
+                            "<h1> Product Added </h1>" +
                             "<table class=\"table\">" +
                             "<thead>" +
                             "  <tr>" +
-                            "    <th>Cart ID:</th>" +
-                            "    <th>Product:</th>" +
-                            "    <th>Quantity:</th>" +
+                            "    <th>Cart ID</th>" +
+                            "    <th>Product</th>" +
+                            "    <th>Quantity</th>" +
                             "  </tr>" +
                             "</thead>" +
                             "<tbody>");
@@ -58,7 +61,7 @@ public class DeleteCartHandler implements HttpHandler {
 
             out.write(
                     "  <tr>" +
-                            "    <td><b>" + cart.getCartID() + "<b></td>" +
+                            "    <td>" + cart.getCartID() + "</td>" +
                             "    <td>" + cart.getProduct() + "</td>" +
                             "    <td>" + cart.getQuantity() + "</td>" +
                             "  </tr>"
@@ -67,12 +70,13 @@ public class DeleteCartHandler implements HttpHandler {
             out.write(
                     "</tbody>" +
                             "</table>" +
-                            "<a href=\"/carts\"> Back to Menu </a>" +
+                            "<a href=\"/products\"> Back to List </a>" +
                             "</body>" +
                             "</html>");
-        } catch (SQLException se) {
-            System.out.println(se.getMessage());
+
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        out.close();
     }
 }

@@ -24,10 +24,14 @@ public class MyHttpServer implements Runnable {
             // view products and customer
             server.createContext("/products", new DisplayAllProductHandler());
             server.createContext("/customers", new DisplayAllCustomerHandler());
+            server.createContext("/carts", new DisplayAllCartHandler());
+            server.createContext("/orders", new DisplayAllOrderHandler());
 
-            // add products and customer
+            // add products and customer & handle process
             server.createContext("/add-product", new AddProductHandler());
+            server.createContext("/process-add-product", new ProcessAddProductHandler());
             server.createContext("/add-customer", new AddCustomerHandler());
+            server.createContext("/process-add-customer", new ProcessAddCustomerHandler());
 
             // search products and customer
             // server.createContext("/searchProduct", new SearchProductHandler() );
@@ -36,10 +40,11 @@ public class MyHttpServer implements Runnable {
             // delete
             server.createContext("/delete-product", new DeleteProductHandler());
             server.createContext("/delete-customer", new DeleteCustomerHandler());
+            server.createContext("/delete-cart", new DeleteCartHandler());
+            server.createContext("/delete-order", new DeleteOrderHandler());
 
-            // data process handler
-            server.createContext("/process-add-customer", new ProcessAddCustomerHandler());
-            server.createContext("/process-add-product", new ProcessAddProductHandler());
+            // manage cart and order
+            server.createContext("/process-add-product-in-cart", new ProcessAddProductInCartHandler());
 
 
             // start

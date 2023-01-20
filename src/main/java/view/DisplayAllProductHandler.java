@@ -64,11 +64,25 @@ public class DisplayAllProductHandler implements HttpHandler {
             out.write(
                     "</tbody>" +
                             "</table>" +
-                            "<a href=\"/\"> Back to Menu </a>" +
+                            "<a href=\"/\"> Back to Menu </a><br><br>" +
+
+                            "<h3> Add Product In Cart </h3>" +
+                            "<form method=\"get\" action=\"/process-add-product-in-cart\">" +
+                            "<div class=\"form-group\"> " +
+
+                            "<label for=\"productid\">Product ID</label> " +
+                            "<input type=\"text\" class=\"form-control\" name=\"productid\" id=\"productid\"> " +
+
+                            "<label for=\"quantity\">Product Quantity</label> " +
+                            "<input type=\"text\" class=\"form-control\" name=\"quantity\" id=\"quantity\" >" +
+                            "<br>" + "<button type=\"submit\" class=\"btn btn-primary\">Submit</button> " +
+
                             "</div>" +
+                            "</form>" +
 
                             "</body>" +
-                            "</html>");
+                            "</html>"
+            );
         } catch (SQLException se) {
             System.out.println(se.getMessage());
         }
