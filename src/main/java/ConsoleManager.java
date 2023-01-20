@@ -32,29 +32,28 @@ public class ConsoleManager {
         System.out.println("[4] List all orders and order's products"); // 4. list all orders
 
         // search
-        System.out.println("\n[5] Search product by ID"); // 3. search product by ID
-        System.out.println("[6] Search customer by ID"); // 4. Search customer by ID
-        System.out.println("[7] Search cart by ID"); // 4. Search customer by ID
-        System.out.println("[8] Search order by ID"); // 4. Search customer by ID
+        System.out.println("\n[5] Search product by ID"); // 5. search product by ID
+        System.out.println("[6] Search customer by ID"); // 6. Search customer by ID
+        System.out.println("[7] Search cart by ID"); // 7. Search customer by ID
+        System.out.println("[8] Search order by ID"); // 8. Search customer by ID
 
         // insert
-        System.out.println("\n[9] Insert new product"); // 5. Add new product
-        System.out.println("[10] Insert new customer"); // 6. Add new customer
+        System.out.println("\n[9] Insert new product"); // 9. Add new product
+        System.out.println("[10] Insert new customer"); // 10. Add new customer
 
         // update
-        System.out.println("\n[11] Update product"); // 7. Amend product
-        System.out.println("[12] Update customer"); // 8. Amend customer
-
-        // order -> move to new menu
-        System.out.println("\n[13] Order Products ->");
+        System.out.println("\n[11] Update product"); // 11. Amend product
+        System.out.println("[12] Update customer"); // 12. Amend customer
 
         // delete
-        System.out.println("\n[14] Delete product"); // 9. Delete product
-        System.out.println("[15] Delete customer"); // 10. Delete customer
-        System.out.println("\n[16] Delete order");
-        System.out.println("\n[17] Delete cart");
+        System.out.println("\n[13] Delete product"); // 13. Delete product
+        System.out.println("[14] Delete customer"); // 14. Delete customer
+        System.out.println("[15] Delete cart"); // 15. Delete order
+        System.out.println("[16] Delete order"); // 16. Delete cart
 
-        System.out.println("\n[18] Exit"); // 11. exit
+        // order -> move to new menu
+        System.out.println("\n[17] Order Products -> ->"); // 17. Order menu
+        System.out.println("[18] Exit"); // 11. exit
     }
 
     /**
@@ -378,5 +377,73 @@ public class ConsoleManager {
         customerDAO.update(customer);
 
         System.out.println("Updated " + customer);
+    }
+
+    // delete product
+    public void deleteProduct() throws SQLException {
+        System.out.println("Delete product");
+        System.out.print("Enter product ID to be deleted: ");
+
+        int dID = Integer.parseInt(scanner.nextLine());
+        Product product = productDAO.get(dID);
+        if (product == null) {
+            System.out.println("Product not found by id=" + dID);
+            return;
+        }
+
+        productDAO.delete(dID);
+        System.out.println("Product deleted Successfully");
+        System.out.println("\t " + product);
+    }
+
+    // delete customer
+    public void deleteCustomer() throws SQLException {
+        System.out.println("Delete customer");
+        System.out.print("Enter customer ID to be deleted: ");
+
+        int cID = Integer.parseInt(scanner.nextLine());
+        Customer customer = customerDAO.get(cID);
+        if (customer == null) {
+            System.out.println("Customer not found by id=" + cID);
+            return;
+        }
+
+        customerDAO.delete(cID);
+        System.out.println("Customer deleted Successfully");
+        System.out.println("\t " + customer);
+    }
+
+    // delete cart
+    public void deleteCart() throws SQLException {
+        System.out.println("Delete cart");
+        System.out.print("Enter cart ID to be deleted: ");
+
+        int cID = Integer.parseInt(scanner.nextLine());
+        Cart cart = cartDAO.get(cID);
+        if (cart == null) {
+            System.out.println("Cart not found by id=" + cID);
+            return;
+        }
+
+        cartDAO.delete(cID);
+        System.out.println("Cart deleted Successfully");
+        System.out.println("\t " + cart);
+    }
+
+    // delete order
+    public void deleteOrder() throws SQLException {
+        System.out.println("Delete order");
+        System.out.print("Enter order ID to be deleted: ");
+
+        int cID = Integer.parseInt(scanner.nextLine());
+        Order order = orderDAO.get(cID);
+        if (order == null) {
+            System.out.println("Order not found by id=" + cID);
+            return;
+        }
+
+        orderDAO.delete(cID);
+        System.out.println("Order deleted Successfully");
+        System.out.println(order);
     }
 }

@@ -1,14 +1,7 @@
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Scanner;
-
-import model.*;
-import repo.*;
 import server.MyHttpServer;
-import view.*;
-
 import java.io.IOException;
-import java.net.InetSocketAddress;
 
 public class App {
     private static final Scanner scanner = new Scanner(System.in);
@@ -18,7 +11,7 @@ public class App {
 
         // run http server
         MyHttpServer httpServer = new MyHttpServer();
-//        httpServer.run();
+        httpServer.run();
 
         // Console based view
         String options;
@@ -69,22 +62,21 @@ public class App {
                 // update customer
                 case "12" -> manager.updateCustomer();
 
-                case "13" -> {
-                    System.out.println("Delete product");
-                    System.out.println("Enter product ID to be deleted: ");
-                    int dID = Integer.parseInt(scanner.nextLine());
-//                    product.delete(dID);
-                }
-                case "14" -> {
-                    System.out.println("Delete customer");
-                    System.out.println("Enter customer ID to be deleted: ");
-                    int cdID = Integer.parseInt(scanner.nextLine());
-//                    customers.delete(cdID);
-                }
-                case "15" -> System.out.println("Delete orders");
-                case "16" -> System.out.println("Delete carts");
+                // delete product
+                case "13" -> manager.deleteProduct();
 
+                // delete customer
+                case "14" -> manager.deleteCustomer();
+
+                // delete cart
+                case "15" -> manager.deleteCart();
+
+                // delete order
+                case "16" -> manager.deleteOrder();
+
+                // order product
                 case "17" -> System.out.println("Order Products -> -> -> ");
+
                 case "18" -> System.out.println("Exit");
                 default -> System.out.println("Invalid option, please re-enter");
             }
