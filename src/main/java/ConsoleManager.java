@@ -4,6 +4,7 @@ import repo.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class ConsoleManager {
 
@@ -81,10 +82,22 @@ public class ConsoleManager {
     public void printCart() throws SQLException {
         System.out.println("\n-------------------- Current Cart Products--------------------");
         ArrayList<Cart> callCart = cartDAO.getAll();
+
+        if (callCart.size() == 0) {
+            System.out.println("The cart is empty");
+            return;
+        }
+
+        // print total price
+        AtomicInteger totalPrice = new AtomicInteger();
+        callCart.forEach(p -> {
+            totalPrice.addAndGet((int) (p.getProduct().getPrice() * p.getQuantity()));
+        });
+        System.out.println("Total Price: " + totalPrice + "$");
+
         for (Cart cart : callCart) {
             System.out.println(cart);
         }
-        System.out.println();
     }
 
     // print all orders
@@ -445,5 +458,112 @@ public class ConsoleManager {
         orderDAO.delete(cID);
         System.out.println("Order deleted Successfully");
         System.out.println(order);
+    }
+
+    // print order menus
+    public void printOrderMenu() {
+        // intro
+        System.out.println("\n\n------------------ Order Product from Everything Store ------------------------");
+        System.out.println("\nChoose from the following options:");
+
+        // prints list
+        System.out.println("\n[1] View products in cart."); // 1. View products in cart
+        System.out.println("[2] Add products in cart"); // 2. Add products in cart
+        System.out.println("[3] Delete all products in cart"); // 3.Delete all products in cart
+        System.out.println("[4] Crate Order (process cart products"); // 4. Crate Order (process cart products0
+        System.out.println("[5] View Orders"); // 5. View Orders
+
+        System.out.println("[6] Exit"); // 11. exit
+    }
+
+    // Add products in cart
+    public void addProductsInCart() throws SQLException {
+        System.out.println("Add products to carts");
+        printProductsList();
+
+        System.out.print("Enter Product ID: ");
+        int productID = scanner.nextInt();
+        Product product = productDAO.get(productID);
+        if (product == null) {
+            System.out.println("Invalid product selection");
+            return;
+        }
+
+        System.out.print("Enter Product Quantity: ");
+        int quantity = scanner.nextInt();
+
+        Cart cart = new Cart(product, quantity);
+        cartDAO.add(cart);
+
+        System.out.println(product);
+        System.out.println("Successfully added in cart.");
+    }
+
+    // Delete all products in cart
+    public void deleteAllCartProducts() throws SQLException {
+        ArrayList<Cart> all = cartDAO.getAll();
+        all.forEach(p -> {
+            try {
+                cartDAO.delete(p.getCartID());
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
+
+        System.out.println("Successfully deleted all cart products.");
+    }
+
+    // Crate Order (process cart products
+    public void createOrder() throws SQLException {
+
+        /*
+         * Create order steps
+         * S1: Get customer id
+         * S2: Create order products list
+         * S3: Delete all cart products
+         * S4: create order
+         */
+
+        // can't process empty cart
+        if(cartDAO.getAll().isEmpty()){
+            System.out.println("Sorry you can't create a order, because the cart is empty. Please add products\n" +
+                    "in cart to order.");
+            return;
+        }
+
+        // get customer
+        System.out.println("Create Order");
+        System.out.print("Enter Customer ID: ");
+        int customerID = scanner.nextInt();
+        Customer customer = customerDAO.get(customerID);
+        if (customer == null) {
+            System.out.println("Customer not found by id=" + customerID);
+            return;
+        }
+
+        // convert cart
+        ArrayList<OrderProduct> orderProducts = new ArrayList<>();
+        cartDAO.getAll().forEach(p -> {
+            orderProducts.add(new OrderProduct(p.getProduct(), p.getQuantity()));
+        });
+
+        // remove cart products
+        cartDAO.getAll().forEach(p -> {
+            try {
+                cartDAO.delete(p.getCartID());
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        });
+
+        // create order
+        Order order = new Order(customer, orderProducts);
+        int orderID = orderDAO.add(order);
+        if (orderID != -1) {
+            System.out.println(orderDAO.get(orderID));
+            System.out.println("-- Order created successfully");
+        } else {
+            System.out.println("Unable to create order.");
+        }
     }
 }

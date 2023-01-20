@@ -27,10 +27,10 @@ public class OrderDaoTest {
             ProductDAO productDAO = new ProductDAO();
 
             products = new ArrayList<>();
-            products.add(new OrderProduct(customer.getCustomerID(), productDAO.get(1), 1));
-            products.add(new OrderProduct(customer.getCustomerID(), productDAO.get(2), 1));
-            products.add(new OrderProduct(customer.getCustomerID(), productDAO.get(3), 1));
-            products.add(new OrderProduct(customer.getCustomerID(), productDAO.get(4), 1));
+            products.add(new OrderProduct(productDAO.get(1), 1));
+            products.add(new OrderProduct(productDAO.get(2), 1));
+            products.add(new OrderProduct(productDAO.get(3), 1));
+            products.add(new OrderProduct(productDAO.get(4), 1));
         }
 
         orderDao = new OrderDAO();

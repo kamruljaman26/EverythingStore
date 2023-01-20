@@ -1,6 +1,8 @@
 import java.sql.SQLException;
 import java.util.Scanner;
+
 import server.MyHttpServer;
+
 import java.io.IOException;
 
 public class App {
@@ -13,7 +15,13 @@ public class App {
         MyHttpServer httpServer = new MyHttpServer();
         httpServer.run();
 
-        // Console based view
+        // main menu
+        createMainMenu();
+
+    }
+
+    // Console based view's main menu
+    private static void createMainMenu() throws SQLException {
         String options;
         do {
 
@@ -75,13 +83,56 @@ public class App {
                 case "16" -> manager.deleteOrder();
 
                 // order product
-                case "17" -> System.out.println("Order Products -> -> -> ");
+                case "17" -> orderMenu();
 
+                // exit
                 case "18" -> System.out.println("Exit");
+
+                // default
                 default -> System.out.println("Invalid option, please re-enter");
             }
 
         } while (!options.equals("18"));
     }
+
+    // order menu
+    private static void orderMenu() throws SQLException {
+        String options;
+        do {
+
+            manager.printOrderMenu();
+            System.out.print("\nInput: ");
+
+            options = scanner.nextLine();
+
+            // handle user selected options
+            switch (options) {
+//
+                // View products in cart
+                case "1" -> manager.printCart();
+
+                // Add products in cart
+                case "2" -> manager.addProductsInCart();
+
+                // Delete all products in cart
+                case "3" -> manager.deleteAllCartProducts();
+
+                //  Crate Order (process cart products
+                case "4" -> manager.createOrder();
+
+                // View Orders
+                case "5" -> manager.printOrdersList();
+
+                // Exit
+                case "6" -> System.out.println("Exit (order-section)");
+
+                // default
+                default -> System.out.println("Invalid option, please re-enter");
+            }
+
+        } while (!options.equals("6"));
+    }
+
+
 }
 

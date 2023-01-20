@@ -49,6 +49,11 @@ public class Order {
 
     // calculate and return total price
     public int getTotalPrice() {
+
+        if(products == null || products.size()==0){
+            return 0;
+        }
+
         AtomicInteger totalPrice = new AtomicInteger();
         products.forEach(p -> {
             totalPrice.addAndGet((int) (p.getQuantity() * p.getProduct().getPrice()));
@@ -62,7 +67,8 @@ public class Order {
 
         // order details
         sb.append("Order Details -------------- ")
-                .append("\n  Order ID:").append(order_id).append(", Total Price: ").append(getTotalPrice()).append("$")
+                .append("\n  Order ID:").append(order_id)
+                .append(", Total Price: ").append(getTotalPrice()).append("$")
                 .append("\n  ").append(customer.toString()).append("\n")
                 .append("  Products: \n");
 
