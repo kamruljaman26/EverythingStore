@@ -2,7 +2,7 @@ package view;
 
 import java.io.OutputStreamWriter;
 
-import com.everythingstore.repo.ProductDAO;
+import repo.ProductDAO;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpExchange;
 

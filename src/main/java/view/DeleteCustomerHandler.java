@@ -2,9 +2,9 @@ package view;
 
 import java.io.OutputStreamWriter;
 
-import com.everythingstore.model.Customer;
-import com.everythingstore.repo.CustomerDAO;
-import com.everythingstore.util.Util;
+import model.Customer;
+import repo.CustomerDAO;
+import util.Util;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpExchange;
 

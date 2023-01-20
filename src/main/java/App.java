@@ -2,12 +2,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import com.everythingstore.model.Address;
-import com.everythingstore.model.Customer;
-import com.everythingstore.model.Product;
-import com.everythingstore.repo.CustomerDAO;
-import com.everythingstore.repo.ProductDAO;
-import com.everythingstore.view.*;
+import model.*;
+import repo.*;
+import view.*;
 import com.sun.net.httpserver.HttpServer;
 
 import java.io.IOException;
@@ -292,9 +289,9 @@ public class App {
         System.out.println("Update Address: ");
 //        customerAddress = scanner.nextLine();
 //        if (customerAddress.equals(""))
-            // todo: fix address type
+        // todo: fix address type
 //            customerAddress = up.getCustomerAddress();
-            customerAddress = up.getCustomerAddress();
+        customerAddress = up.getCustomerAddress();
 
         System.out.println("Update Telephone Number: ");
         customerTelNo = scanner.nextLine();
