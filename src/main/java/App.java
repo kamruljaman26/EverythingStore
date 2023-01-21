@@ -16,7 +16,7 @@ public class App {
         httpServer.run();
 
         // main menu
-//        createMainMenu();
+        createMainMenu();
 
     }
 

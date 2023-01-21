@@ -49,16 +49,16 @@ public class Order {
 
     // calculate and return total price
     public int getTotalPrice() {
-
-        if(products == null || products.size()==0){
+        System.out.println(products);
+        if (products == null || products.size() == 0) {
             return 0;
+        } else {
+            int totalP = 0;
+            for (OrderProduct product : products) {
+                totalP += product.getProduct().getPrice() * product.getQuantity();
+            }
+            return totalP;
         }
-
-        AtomicInteger totalPrice = new AtomicInteger();
-        products.forEach(p -> {
-            totalPrice.addAndGet((int) (p.getQuantity() * p.getProduct().getPrice()));
-        });
-        return totalPrice.get();
     }
 
     @Override

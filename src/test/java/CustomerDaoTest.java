@@ -70,7 +70,7 @@ public class CustomerDaoTest {
     }
 
     @Test
-    public void test3GetProducts() throws SQLException {
+    public void test3Get() throws SQLException {
         Customer customer = customerDAO.get(customerID);
 
         assertNotEquals(null, customer);
@@ -78,7 +78,7 @@ public class CustomerDaoTest {
     }
 
     @Test
-    public void test4DeleteProducts() throws SQLException {
+    public void test4Delete() throws SQLException {
         boolean status = customerDAO.delete(customerID);
         assertTrue(status);
         assertNull(customerDAO.get(customerID));

@@ -65,7 +65,7 @@ public class CartDaoTest {
     }
 
     @Test
-    public void test3GetProducts() throws SQLException {
+    public void test3Get() throws SQLException {
         Cart cart = cartDao.get(cartID);
 
         assertNotEquals(null, cart);
@@ -73,7 +73,7 @@ public class CartDaoTest {
     }
 
     @Test
-    public void test4DeleteProducts() throws SQLException {
+    public void test4Delete() throws SQLException {
         // delete cart
         boolean status = cartDao.delete(cartID);
         assertTrue(status);

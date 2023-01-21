@@ -49,7 +49,7 @@ public class AddressDaoTest {
     }
 
     @Test
-    public void test3GetProducts() throws SQLException {
+    public void test3Get() throws SQLException {
         Address address = addressDAO.get(addressId);
 
         assertNotEquals(null, address);
@@ -57,7 +57,7 @@ public class AddressDaoTest {
     }
 
     @Test
-    public void test4DeleteProducts() throws SQLException {
+    public void test4Delete() throws SQLException {
         boolean status = addressDAO.delete(addressId);
         assertTrue(status);
         assertNull(addressDAO.get(addressId));

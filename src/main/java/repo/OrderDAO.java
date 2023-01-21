@@ -102,10 +102,13 @@ public class OrderDAO implements DAO<Order> {
 
                 // update product stock
                 ProductDAO productDAO = new ProductDAO();
-                Product updateStockProduct = productDAO.get(product.getProduct().getId());
-                updateStockProduct.setQuantity(updateStockProduct.getQuantity()
-                        + product.getQuantity());
-                productDAO.update(updateStockProduct);
+                Product product1 = product.getProduct();
+                if(product1 != null) {
+                    Product updateStockProduct = productDAO.get(product.getProduct().getId());
+                    updateStockProduct.setQuantity(updateStockProduct.getQuantity()
+                            + product.getQuantity());
+                    productDAO.update(updateStockProduct);
+                }
 
             } catch (SQLException e) {
                 e.printStackTrace();
