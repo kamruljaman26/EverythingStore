@@ -34,19 +34,11 @@ public class RootHandler implements HttpHandler {
                         "<br>" +
                         "<a href=\"/orders\">Display Orders</a> " +
 
-/*                        // search products, customer
-                        "<br>" + "<br>" +
-                        "<a href=\"/search-product\">Search Product by ID</a> " +
-                        "<br>" +
-                        "<a href=\"/search-customer\">Search Customer by ID</a> " +*/
-
                         // add products, customer
                         "<br>" + "<br>" +
                         "<a href=\"/add-product\">Add Product</a> " +
                         "<br>" +
                         "<a href=\"/add-customer\">Add Customer</a> " +
-
-
 
                         "</div>" + "</body>" + "</html>"
         );

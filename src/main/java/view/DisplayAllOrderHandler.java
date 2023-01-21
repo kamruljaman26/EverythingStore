@@ -34,9 +34,10 @@ public class DisplayAllOrderHandler implements HttpHandler {
                             "<table class=\"table\">" +
                             "<thead>" +
                             "  <tr>" +
-                            "    <th>Order ID:</th>" +
-                            "    <th>Customer:</th>" +
-                            "    <th>Products:</th>" +
+                            "    <th>Order ID</th>" +
+                            "    <th>Customer</th>" +
+                            "    <th>Products</th>" +
+                            "    <th>Total Price</th>" +
                             "  </tr>" +
                             "</thead>" +
                             "<tbody>");
@@ -71,6 +72,7 @@ public class DisplayAllOrderHandler implements HttpHandler {
                                 // create short string for customer & order
                                 "    <td>" + cus.toString() + "</td>" +
                                 "    <td>" + prod.toString() + "</td>" +
+                                "    <td>" + order.getTotalPrice() + "$</td>" +
 
                                 "<td><a href=\"/delete-order?id=" + order.getOrder_id() + "\"> delete </a><td>" +
                                 "  </tr>"
@@ -86,6 +88,7 @@ public class DisplayAllOrderHandler implements HttpHandler {
                             "</html>");
         } catch (SQLException se) {
             System.out.println(se.getMessage());
+            se.printStackTrace();
         }
         out.close();
     }

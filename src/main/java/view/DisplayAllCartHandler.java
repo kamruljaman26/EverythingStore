@@ -3,15 +3,14 @@ package view;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import model.Cart;
-import model.Customer;
 import repo.CartDAO;
-import repo.CustomerDAO;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class DisplayAllCartHandler implements HttpHandler {
 
@@ -24,8 +23,11 @@ public class DisplayAllCartHandler implements HttpHandler {
         CartDAO cartDao = new CartDAO();
 
         try {
-            ArrayList<Cart> allCarts = (ArrayList<Cart>) cartDao.getAll();
-
+            ArrayList<Cart> allCarts = cartDao.getAll();
+            AtomicInteger totalPrice = new AtomicInteger();
+            allCarts.forEach(p -> {
+                totalPrice.addAndGet((int) (p.getProduct().getPrice() * p.getQuantity()));
+            });
             out.write(
                     "<html>" +
                             "<head> <title>Customer Library</title> " +
@@ -33,6 +35,7 @@ public class DisplayAllCartHandler implements HttpHandler {
                             "</head>" +
                             "<body>" +
                             "<h1> Cart Products </h1>" +
+                            "<h3> Total Price: " + totalPrice + "$ </h3>" +
                             "<table class=\"table\">" +
                             "<thead>" +
                             "  <tr>" +
@@ -57,7 +60,19 @@ public class DisplayAllCartHandler implements HttpHandler {
             out.write(
                     "</tbody>" +
                             "</table>" +
-                            "<a href=\"/\"> Back to Menu </a>" +
+                            "<a href=\"/\"> Back to Menu </a><br><br>" +
+
+                            "<h3> Order cart products </h3>" +
+                            "<form method=\"get\" action=\"/process-order\">" +
+                            "<div class=\"form-group\"> " +
+
+                            "<label for=\"customerid\">Category</label> " +
+                            "<input type=\"text\" class=\"form-control\" name=\"customerid\" id=\"customerid\"> " +
+
+                            "<br>" + "<button type=\"submit\" class=\"btn btn-primary\">Process Order</button> " +
+                            "</div>" +
+                            "</form>" +
+
                             "</div>" +
 
                             "</body>" +

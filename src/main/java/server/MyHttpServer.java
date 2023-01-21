@@ -43,6 +43,9 @@ public class MyHttpServer implements Runnable {
             server.createContext("/delete-cart", new DeleteCartHandler());
             server.createContext("/delete-order", new DeleteOrderHandler());
 
+            // process order -> :D
+            server.createContext("/process-order", new ProcessOrderHandler());
+
             // manage cart and order
             server.createContext("/process-add-product-in-cart", new ProcessAddProductInCartHandler());
 
